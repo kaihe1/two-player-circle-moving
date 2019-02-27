@@ -11,6 +11,7 @@
       var h = window.innerHeight;
       var ball = new ball(); // I am creating a new object globally
       var ball2 = new ball2();
+      var d;
       
       function setup(){
         createCanvas(w,h);
@@ -22,6 +23,7 @@
         ball.move();
         ball2.show();
         ball2.move();
+        ball2.kill();
       }
       
       function ball(){
@@ -29,7 +31,7 @@
         this.Y = 100;
         this.show = function(){
           fill(color("red"));
-          ellipse(this.X,this.Y,100,100)
+          ellipse(this.X,this.Y,100,100);
         };
         this.move = function(){
           if (keyIsDown(68) && (this.X < w-100)){//right arrow key
@@ -52,7 +54,7 @@
         this.Y = 100;
         this.show = function(){
           fill(color("blue"));
-          ellipse(this.X,this.Y,100,100)
+          ellipse(this.X,this.Y,100,100);
         };
         this.move = function(){
           if (keyIsDown(76) && (this.X < w-100)){//right arrow key
@@ -68,16 +70,15 @@
                 this.Y += 10;
           }
         };
-      }
-      
-      function gameOver(){
-        ball.show();
-        ball2.show();
-        if (ball.show() = ball2.show()){
-          this.X == 0;
-          this.Y == 0;
+         this.kill = function(){
+            d = dist(this.X,this.Y,ball.X,ball.Y);//calculating two disdance of two object
+            if (d < 50){
+              noLoop();//stop the loop
+              window.alert("YOU LOSE");//alert losing
+            }
         }
       }
+
       
 
     </script>
